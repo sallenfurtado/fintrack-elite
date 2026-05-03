@@ -80,36 +80,16 @@
   .scrollbar-hide::-webkit-scrollbar { display:none; }
 }
 
-/* ─── Dark mode: input contrast fix ─────────────────────────────────────────── */
-.dark input,
-.dark textarea,
-.dark select {
-  color: #f1f5f9;            /* slate-100 */
-  background-color: #1e293b; /* slate-800 */
+/* ─── Dark mode: input safety net ───────────────────────────────────────────── */
+/* Ensures any input without explicit dark class still has readable text */
+.dark input:not([class*="bg-"]),
+.dark textarea:not([class*="bg-"]),
+.dark select:not([class*="bg-"]) {
+  color: #f1f5f9;
+  background-color: #334155;
 }
 
 .dark input::placeholder,
 .dark textarea::placeholder {
-  color: #64748b; /* slate-500 */
-}
-
-.dark input:focus,
-.dark textarea:focus,
-.dark select:focus {
-  background-color: #1e293b;
-  color: #f1f5f9;
-  outline-color: #3b82f6; /* blue-500 */
-}
-
-/* Specific Tailwind bg overrides for dark inputs */
-.dark input.bg-slate-50,
-.dark textarea.bg-slate-50,
-.dark select.bg-slate-50 {
-  background-color: #1e293b !important;
-}
-
-.dark input.bg-white,
-.dark textarea.bg-white,
-.dark select.bg-white {
-  background-color: #1e293b !important;
+  color: #94a3b8;
 }
