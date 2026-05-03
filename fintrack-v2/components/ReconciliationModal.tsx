@@ -234,17 +234,17 @@ const ReconciliationModal: React.FC<ReconciliationModalProps> = ({
         }
       `}</style>
       <div className={`bg-white rounded-3xl w-full ${step === 'INPUT' ? 'max-w-xl' : 'max-w-6xl h-[90vh]'} flex flex-col overflow-hidden shadow-2xl transition-all duration-300`}>
-        <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50 shrink-0">
+        <div className="p-6 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center bg-slate-50 dark:bg-slate-900 shrink-0">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-blue-600 text-white rounded-xl">
               <Sparkles size={20} />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-slate-800">Conciliar {isCredit ? 'Fatura' : 'Extrato'}: {source?.name}</h2>
+              <h2 className="text-xl font-bold text-slate-800 dark:text-white">Conciliar {isCredit ? 'Fatura' : 'Extrato'}: {source?.name}</h2>
               <p className="text-xs text-slate-500 font-medium">IA + {isCredit ? 'Projeção de Parcelas' : 'Categorização'} + Detecção de Duplicidade</p>
             </div>
           </div>
-          <button onClick={onClose} className="p-2 hover:bg-slate-200 rounded-full transition-colors text-slate-400">
+          <button onClick={onClose} className="p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full text-slate-600 dark:text-slate-300 transition-colors text-slate-400">
             <X size={20} />
           </button>
         </div>
@@ -254,7 +254,7 @@ const ReconciliationModal: React.FC<ReconciliationModalProps> = ({
             <div className="space-y-4 flex-1 flex flex-col">
               {isCredit && (
                <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex flex-col gap-2 shrink-0">
-                  <label className="text-xs font-bold text-slate-500 uppercase flex items-center gap-1">
+                  <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase flex items-center gap-1">
                      <Calendar size={14} /> Competência da Fatura
                   </label>
                   <div className="flex gap-2 items-center">
@@ -382,7 +382,7 @@ const ReconciliationModal: React.FC<ReconciliationModalProps> = ({
                                         {item.is_balance_line ? (
                                             <span className="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded">N/A</span>
                                         ) : item.allocations ? (
-                                             <div className="flex items-center gap-1 text-slate-500 text-xs font-medium" title="Definido por Regra">
+                                             <div className="flex items-center gap-1 text-slate-500 dark:text-slate-400 text-xs font-medium" title="Definido por Regra">
                                                 <Sparkles size={12} className="text-indigo-500" /> Regra
                                              </div>
                                         ) : (
@@ -451,10 +451,10 @@ const ReconciliationModal: React.FC<ReconciliationModalProps> = ({
       {newCategoryPrompt && (
         <div className="fixed inset-0 z-[70] flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
           <div className="bg-white rounded-2xl w-full max-w-sm p-6 shadow-2xl animate-in zoom-in-95 duration-200">
-            <h3 className="text-lg font-bold text-slate-800 mb-4">Nova Categoria</h3>
+            <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-4">Nova Categoria</h3>
             <div className="space-y-4">
               <div>
-                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1 block">Nome da Categoria</label>
+                <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1 block">Nome da Categoria</label>
                 <input 
                   type="text" 
                   autoFocus
@@ -471,7 +471,7 @@ const ReconciliationModal: React.FC<ReconciliationModalProps> = ({
               <div className="flex gap-2 pt-2">
                 <button 
                   onClick={() => setNewCategoryPrompt(null)}
-                  className="flex-1 py-2 text-sm font-bold text-slate-500 hover:bg-slate-100 rounded-xl transition-colors"
+                  className="flex-1 py-2 text-sm font-bold text-slate-500 hover:bg-slate-100 dark:bg-slate-700 rounded-xl transition-colors"
                 >
                   Cancelar
                 </button>

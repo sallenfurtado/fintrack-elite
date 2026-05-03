@@ -31,7 +31,7 @@ const TrashModal: React.FC<TrashModalProps> = ({
   return (
     <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-in fade-in duration-200">
       <div className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[90vh]">
-        <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+        <div className="p-6 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center bg-slate-50 dark:bg-slate-900">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-slate-200 text-slate-600 rounded-xl">
               <Trash2 size={20} />
@@ -41,7 +41,7 @@ const TrashModal: React.FC<TrashModalProps> = ({
               <p className="text-xs font-bold text-slate-500">{deletedTransactions?.length || 0} itens apagados</p>
             </div>
           </div>
-          <button onClick={onClose} className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-200 rounded-full transition-colors">
+          <button onClick={onClose} className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full text-slate-600 dark:text-slate-300 transition-colors">
             <X size={20} />
           </button>
         </div>
@@ -52,7 +52,7 @@ const TrashModal: React.FC<TrashModalProps> = ({
               <div className="inline-flex items-center justify-center p-4 bg-slate-50 rounded-full text-slate-400 mb-4">
                 <Trash2 size={32} />
               </div>
-              <h3 className="text-lg font-bold text-slate-800">Lixeira Vazia</h3>
+              <h3 className="text-lg font-bold text-slate-800 dark:text-white">Lixeira Vazia</h3>
               <p className="text-slate-500 mt-1 text-sm">Nenhuma transação foi apagada recentemente.</p>
             </div>
           ) : (
@@ -85,7 +85,7 @@ const TrashModal: React.FC<TrashModalProps> = ({
           )}
         </div>
 
-        <div className="p-6 border-t border-slate-100 bg-slate-50 flex justify-between items-center">
+        <div className="p-6 border-t border-slate-100 dark:border-slate-700 bg-slate-50 flex justify-between items-center">
           <button
             onClick={onClose}
             className="py-2.5 px-6 bg-white border border-slate-200 text-slate-700 rounded-xl text-sm font-bold hover:bg-slate-50 transition-colors"

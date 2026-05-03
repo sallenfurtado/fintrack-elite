@@ -92,19 +92,19 @@ const CreditCardForm: React.FC<CreditCardFormProps> = ({ isOpen, onClose, onSubm
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-      <div className="bg-white rounded-2xl w-full max-w-md overflow-hidden shadow-2xl">
-        <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50">
-          <h2 className="text-xl font-bold text-slate-800">
+      <div className="bg-white dark:bg-slate-800 rounded-2xl w-full max-w-md overflow-hidden shadow-2xl">
+        <div className="p-6 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center bg-slate-50 dark:bg-slate-900">
+          <h2 className="text-xl font-bold text-slate-800 dark:text-white">
             {initialData ? 'Editar Cartão' : 'Adicionar Cartão'}
           </h2>
-          <button onClick={onClose} className="p-2 hover:bg-slate-200 rounded-full transition-all active:scale-90">
+          <button onClick={onClose} className="p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full text-slate-600 dark:text-slate-300 transition-all active:scale-90">
             <X size={20} />
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           <div className="space-y-1">
-            <label className="text-xs font-bold text-slate-500 uppercase">Nome do Cartão</label>
+            <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">Nome do Cartão</label>
             <div className="relative">
               <CardIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
               <input
@@ -112,14 +112,14 @@ const CreditCardForm: React.FC<CreditCardFormProps> = ({ isOpen, onClose, onSubm
                 placeholder="Ex: Visa Infinite"
                 value={name}
                 onChange={(e) => { setName(e.target.value); clearError('name'); }}
-                className={`w-full pl-10 pr-4 py-2 bg-slate-50 border rounded-xl focus:outline-none focus:ring-2 transition-all ${errors.name ? 'border-rose-300 focus:ring-rose-200 bg-rose-50' : 'border-slate-200 focus:ring-blue-500'}`}
+                className={`w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-700 border rounded-xl focus:outline-none focus:ring-2 transition-all text-slate-900 dark:text-white placeholder:text-slate-400 ${errors.name ? 'border-rose-300 focus:ring-rose-200 bg-rose-50 dark:bg-rose-900/20 dark:text-white' : 'border-slate-200 dark:border-slate-600 focus:ring-blue-500'}`}
               />
             </div>
             {errors.name && <p className="text-rose-500 text-xs font-semibold flex items-center gap-1 mt-1"><AlertCircle size={12}/> {errors.name}</p>}
           </div>
 
           <div className="space-y-1">
-            <label className="text-xs font-bold text-slate-500 uppercase">Limite Total</label>
+            <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">Limite Total</label>
             <div className="relative">
               <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold">R$</span>
               <input
@@ -128,7 +128,7 @@ const CreditCardForm: React.FC<CreditCardFormProps> = ({ isOpen, onClose, onSubm
                 placeholder="R$ 0,00"
                 value={limit}
                 onChange={(e) => { setLimit(e.target.value); clearError('limit'); }}
-                className={`w-full pl-10 pr-4 py-2 bg-slate-50 border rounded-xl focus:outline-none focus:ring-2 font-bold transition-all ${errors.limit ? 'border-rose-300 focus:ring-rose-200 bg-rose-50' : 'border-slate-200 focus:ring-blue-500'}`}
+                className={`w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-700 border rounded-xl focus:outline-none focus:ring-2 text-slate-900 dark:text-white placeholder:text-slate-400 font-bold transition-all ${errors.limit ? 'border-rose-300 focus:ring-rose-200 bg-rose-50 dark:bg-rose-900/20 dark:text-white' : 'border-slate-200 dark:border-slate-600 focus:ring-blue-500'}`}
               />
             </div>
             {errors.limit && <p className="text-rose-500 text-xs font-semibold flex items-center gap-1 mt-1"><AlertCircle size={12}/> {errors.limit}</p>}
@@ -136,7 +136,7 @@ const CreditCardForm: React.FC<CreditCardFormProps> = ({ isOpen, onClose, onSubm
 
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-1">
-              <label className="text-xs font-bold text-slate-500 uppercase">Dia Fechamento</label>
+              <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">Dia Fechamento</label>
               <div className="relative">
                 <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
                 <input
@@ -146,13 +146,13 @@ const CreditCardForm: React.FC<CreditCardFormProps> = ({ isOpen, onClose, onSubm
                   placeholder="Ex: 5"
                   value={closingDay}
                   onChange={(e) => { setClosingDay(e.target.value); clearError('closingDay'); }}
-                  className={`w-full pl-10 pr-4 py-2 bg-slate-50 border rounded-xl focus:outline-none focus:ring-2 transition-all ${errors.closingDay ? 'border-rose-300 focus:ring-rose-200 bg-rose-50' : 'border-slate-200 focus:ring-blue-500'}`}
+                  className={`w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-700 border rounded-xl focus:outline-none focus:ring-2 transition-all text-slate-900 dark:text-white placeholder:text-slate-400 ${errors.closingDay ? 'border-rose-300 focus:ring-rose-200 bg-rose-50 dark:bg-rose-900/20 dark:text-white' : 'border-slate-200 dark:border-slate-600 focus:ring-blue-500'}`}
                 />
               </div>
               {errors.closingDay && <p className="text-rose-500 text-xs font-semibold mt-1">{errors.closingDay}</p>}
             </div>
             <div className="space-y-1">
-              <label className="text-xs font-bold text-slate-500 uppercase">Dia Vencimento</label>
+              <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">Dia Vencimento</label>
               <div className="relative">
                 <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
                 <input
@@ -162,7 +162,7 @@ const CreditCardForm: React.FC<CreditCardFormProps> = ({ isOpen, onClose, onSubm
                   placeholder="Ex: 10"
                   value={dueDay}
                   onChange={(e) => { setDueDay(e.target.value); clearError('dueDay'); }}
-                  className={`w-full pl-10 pr-4 py-2 bg-slate-50 border rounded-xl focus:outline-none focus:ring-2 transition-all ${errors.dueDay ? 'border-rose-300 focus:ring-rose-200 bg-rose-50' : 'border-slate-200 focus:ring-blue-500'}`}
+                  className={`w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-700 border rounded-xl focus:outline-none focus:ring-2 transition-all text-slate-900 dark:text-white placeholder:text-slate-400 ${errors.dueDay ? 'border-rose-300 focus:ring-rose-200 bg-rose-50 dark:bg-rose-900/20 dark:text-white' : 'border-slate-200 dark:border-slate-600 focus:ring-blue-500'}`}
                 />
               </div>
               {errors.dueDay && <p className="text-rose-500 text-xs font-semibold mt-1">{errors.dueDay}</p>}

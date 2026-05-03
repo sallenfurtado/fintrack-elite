@@ -266,10 +266,10 @@ const FilterPanel: React.FC<FilterPanelProps> = ({ isOpen, onClose, filters, set
 
           {/* Salvar Filtro */}
           {hasActiveFilters && (
-            <div className="pt-6 border-t border-slate-100">
+            <div className="pt-6 border-t border-slate-100 dark:border-slate-700">
               {isSaving ? (
                 <div className="space-y-3">
-                  <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block">Nome do Filtro</label>
+                  <label className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider block">Nome do Filtro</label>
                   <div className="flex gap-2">
                     <input 
                       type="text" 
@@ -306,7 +306,7 @@ const FilterPanel: React.FC<FilterPanelProps> = ({ isOpen, onClose, filters, set
           )}
         </div>
 
-        <div className="p-6 border-t border-slate-100 bg-slate-50 flex gap-3">
+        <div className="p-6 border-t border-slate-100 dark:border-slate-700 bg-slate-50 flex gap-3">
           <button 
             onClick={handleReset}
             className="flex-1 py-3 bg-white border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 transition-all flex items-center justify-center gap-2"

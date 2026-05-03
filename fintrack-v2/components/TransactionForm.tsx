@@ -301,7 +301,7 @@ const TransactionForm: React.FC<TransactionFormProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
       <div className="bg-white rounded-3xl w-full max-w-2xl shadow-2xl flex flex-col max-h-[95vh] overflow-hidden">
-        <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50 shrink-0">
+        <div className="p-6 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center bg-slate-50 dark:bg-slate-900 shrink-0">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-slate-900 text-white rounded-xl">
               <Plus size={20} />
@@ -313,7 +313,7 @@ const TransactionForm: React.FC<TransactionFormProps> = ({
               }
             </h2>
           </div>
-          <button onClick={onClose} className="p-2 hover:bg-slate-200 rounded-full transition-all active:scale-90">
+          <button onClick={onClose} className="p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full text-slate-600 dark:text-slate-300 transition-all active:scale-90">
             <X size={20} />
           </button>
         </div>
@@ -368,7 +368,7 @@ const TransactionForm: React.FC<TransactionFormProps> = ({
                       }
                       clearError('amount'); 
                     }}
-                    className={`w-full pl-14 pr-6 py-4 bg-slate-50 border rounded-2xl focus:outline-none focus:ring-2 text-3xl font-black transition-all ${errors.amount ? 'border-rose-300 focus:ring-rose-200 bg-rose-50' : 'border-slate-200 focus:ring-slate-900 focus:border-transparent'}`}
+                    className={`w-full pl-14 pr-6 py-4 bg-slate-50 border rounded-2xl focus:outline-none focus:ring-2 text-3xl font-black transition-all ${errors.amount ? 'border-rose-300 focus:ring-rose-200 bg-rose-50 dark:bg-rose-900/20 dark:text-white' : 'border-slate-200 focus:ring-slate-900 focus:border-transparent'}`}
                   />
                 </div>
                 {errors.amount && <p className="text-rose-500 text-[10px] font-bold flex items-center gap-1 mt-1 uppercase tracking-wider"><AlertCircle size={12}/> {errors.amount}</p>}
@@ -382,7 +382,7 @@ const TransactionForm: React.FC<TransactionFormProps> = ({
                   placeholder="Ex: Supermercado, Aluguel..."
                   value={description}
                   onChange={(e) => { setDescription(e.target.value); clearError('description'); }}
-                  className={`w-full px-5 py-4 bg-slate-50 border rounded-2xl font-bold text-slate-700 focus:outline-none focus:ring-2 transition-all ${errors.description ? 'border-rose-300 focus:ring-rose-200 bg-rose-50' : 'border-slate-200 focus:ring-slate-900'}`}
+                  className={`w-full px-5 py-4 bg-slate-50 border rounded-2xl font-bold text-slate-700 focus:outline-none focus:ring-2 transition-all ${errors.description ? 'border-rose-300 focus:ring-rose-200 bg-rose-50 dark:bg-rose-900/20 dark:text-white' : 'border-slate-200 focus:ring-slate-900'}`}
                 />
               </div>
             </div>
@@ -396,7 +396,7 @@ const TransactionForm: React.FC<TransactionFormProps> = ({
                     type="date"
                     value={date}
                     onChange={(e) => { setDate(e.target.value); clearError('date'); }}
-                    className={`w-full px-4 py-3 bg-slate-50 border rounded-2xl text-sm font-bold focus:outline-none focus:ring-2 transition-all ${errors.date ? 'border-rose-300 focus:ring-rose-200 bg-rose-50' : 'border-slate-200 focus:ring-slate-900'}`}
+                    className={`w-full px-4 py-3 bg-slate-50 border rounded-2xl text-sm font-bold focus:outline-none focus:ring-2 transition-all ${errors.date ? 'border-rose-300 focus:ring-rose-200 bg-rose-50 dark:bg-rose-900/20 dark:text-white' : 'border-slate-200 focus:ring-slate-900'}`}
                   />
                 </div>
                 <div className="space-y-2">
@@ -404,7 +404,7 @@ const TransactionForm: React.FC<TransactionFormProps> = ({
                   <select
                     value={categoryId}
                     onChange={(e) => { setCategoryId(e.target.value); clearError('categoryId'); }}
-                    className={`w-full px-4 py-3 bg-slate-50 border rounded-2xl text-sm font-bold focus:outline-none focus:ring-2 transition-all ${errors.categoryId ? 'border-rose-300 focus:ring-rose-200 bg-rose-50' : 'border-slate-200 focus:ring-slate-900'}`}
+                    className={`w-full px-4 py-3 bg-slate-50 border rounded-2xl text-sm font-bold focus:outline-none focus:ring-2 transition-all ${errors.categoryId ? 'border-rose-300 focus:ring-rose-200 bg-rose-50 dark:bg-rose-900/20 dark:text-white' : 'border-slate-200 focus:ring-slate-900'}`}
                   >
                     <option value="">Selecione</option>
                     {categories.filter(c => c.type === type).map(c => (
@@ -470,7 +470,7 @@ const TransactionForm: React.FC<TransactionFormProps> = ({
                       value={sourceId}
                       onChange={(e) => { setSourceId(e.target.value); clearError('sourceId'); }}
                       disabled={!!initialSourceId}
-                      className={`w-full px-4 py-3 bg-slate-50 border rounded-2xl text-sm font-bold focus:outline-none focus:ring-2 transition-all ${errors.sourceId ? 'border-rose-300 focus:ring-rose-200 bg-rose-50' : 'border-slate-200 focus:ring-slate-900'} ${!!initialSourceId ? 'opacity-70 cursor-not-allowed' : ''}`}
+                      className={`w-full px-4 py-3 bg-slate-50 border rounded-2xl text-sm font-bold focus:outline-none focus:ring-2 transition-all ${errors.sourceId ? 'border-rose-300 focus:ring-rose-200 bg-rose-50 dark:bg-rose-900/20 dark:text-white' : 'border-slate-200 focus:ring-slate-900'} ${!!initialSourceId ? 'opacity-70 cursor-not-allowed' : ''}`}
                     >
                       <option value="">Selecione a conta/cartão</option>
                       {paymentMethod === 'CASH' 
