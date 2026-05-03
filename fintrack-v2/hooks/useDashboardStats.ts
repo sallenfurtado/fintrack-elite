@@ -29,11 +29,16 @@ export function useDashboardStats(
 
     const totalCreditBill = creditLiabilityPerCard.reduce((s, { bill }) => s + bill, 0);
 
+    const totalCreditLimit = creditCards.reduce((s, c) => s + (c.limit_amount || 0), 0);
+    const availableCredit = totalCreditLimit - totalCreditBill;
+
     return {
       totalCash,
       currentMonthIncome,
       currentMonthExpenses,
       totalCreditBill,
+      totalCreditLimit,
+      availableCredit,
       creditLiabilityPerCard,
     };
   }, [transactions, accounts, creditCards]);
