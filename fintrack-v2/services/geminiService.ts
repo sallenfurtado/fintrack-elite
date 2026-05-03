@@ -1,6 +1,15 @@
 import { GoogleGenAI, Type } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+// Lazy init — app loads even without key; error only when IA is called
+let _ai: GoogleGenAI | null = null;
+function getAI(): GoogleGenAI {
+  if (!_ai) {
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+    if (!apiKey) throw new Error('Chave VITE_GEMINI_API_KEY não configurada.');
+    _ai = new GoogleGenAI({ apiKey });
+  }
+  return _ai;
+}
 
 // Correct model name — gemini-2.0-flash is stable and fast
 const MODEL = 'gemini-2.0-flash';
@@ -20,7 +29,7 @@ export async function getFinancialInsights(
 ) {
   try {
     const response = await withTimeout(
-      ai.models.generateContent({
+      getAI().models.generateContent({
         model: MODEL,
         contents: `
           Analise o resumo financeiro e transações recentes abaixo.
@@ -66,7 +75,7 @@ export async function getFinancialInsights(
 export async function parseInvoiceData(rawText: string) {
   try {
     const response = await withTimeout(
-      ai.models.generateContent({
+      getAI().models.generateContent({
         model: MODEL,
         contents: `
           Extraia os dados de transação do texto bruto abaixo (fatura de cartão de crédito).
@@ -118,7 +127,7 @@ export async function parseInvoiceData(rawText: string) {
 export async function parseStatementData(rawText: string) {
   try {
     const response = await withTimeout(
-      ai.models.generateContent({
+      getAI().models.generateContent({
         model: MODEL,
         contents: `
           Extraia os dados de transação do texto bruto abaixo (extrato bancário).
@@ -176,7 +185,7 @@ export async function predictBalance(
 ) {
   try {
     const response = await withTimeout(
-      ai.models.generateContent({
+      getAI().models.generateContent({
         model: MODEL,
         contents: `
           Com base no histórico de transações dos últimos 3 meses, preveja a tendência financeira para os próximos 3 meses.
